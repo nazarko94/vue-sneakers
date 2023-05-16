@@ -1,7 +1,5 @@
 <template>
- <div id="app">
   <catalog-wrapper/>
- </div>
 </template>
 
 <script>
