@@ -10,12 +10,12 @@
         :item_data="item"
       />
     </div>
-    <div class="arrows">
-      <div class="circle" @click="prevSlide">
-        <img src="../../public/img/switch.svg" class="arrow" alt="arrow">
+    <div class="catalog-swiper arrows">
+      <div class="arows__circle" @click="prevSlide">
+        <img src="../../../public/img/switch.svg" class="arows__circle-arrow" alt="arrow">
       </div>
-      <div class="circle" @click="nextSlide">
-        <img src="../../public/img/switch.svg" class="arrow last" alt="arrow">
+      <div class="arows__circle" @click="nextSlide">
+        <img src="../../../public/img/switch.svg" class="arows__circle-arrow last" alt="arrow">
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@ import CatalogSwiperItem from './CatalogSwiperItem.vue';
     justify-content: space-between;
     padding: 0 5px;
   }
-  .circle {
+  .arows__circle {
     position: relative;
     bottom: 170px;
     width: 35px;
@@ -97,12 +97,12 @@ import CatalogSwiperItem from './CatalogSwiperItem.vue';
     transform: rotate(-180deg);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
   }
-  .arrow {
+  .arows__circle-arrow {
     position: absolute;
     top: 10px;
     left: 17px;
+    color: #000;
   }
-
   .last {
     transform: rotate(-180deg);
     left: 12px;

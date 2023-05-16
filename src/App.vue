@@ -7,7 +7,7 @@
   export default {
     components: {
       CatalogWrapper
-    }
+    },
   }
 </script>
 

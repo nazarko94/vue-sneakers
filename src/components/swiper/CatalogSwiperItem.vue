@@ -1,6 +1,6 @@
 <template>
   <div class="catalog-swiper-item">
-    <img :src="require('../../public/img/' + item_data.img)" alt="">
+    <img :src="require('../../../public/img/' + item_data.img)" alt="">
   </div>
 </template>
 
