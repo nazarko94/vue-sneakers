@@ -28,5 +28,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 30px;
+    padding-bottom: 20px;
   }
 </style>

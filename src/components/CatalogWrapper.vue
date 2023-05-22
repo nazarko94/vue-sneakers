@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import CatalogHeader from "./CatalogHeader.vue";
 import CatalogBanner from "./CatalogBanner.vue";
 import CatalogSearch from "./CatalogSearch.vue";
@@ -33,82 +34,22 @@ export default {
         { id: 2, name: "slideThree", img: "slideThree.png" },
         { id: 3, name: "slideFour", img: "slideFour.png" },
       ],
-      sneakers: [
-        {
-          id: 0,
-          desc: "Чоловічі Кросівки Nike Blazer Mid Suede",
-          price: "3999 грн",
-          image: "1.jpg",
-        },
-        {
-          id: 1,
-          desc: "Чоловічі Кросівки Nike Air Max 270",
-          price: "4199 грн",
-          image: "2.jpg",
-        },
-        {
-          id: 2,
-          desc: "Чоловічі Кросівки Nike Blazer Mid Suede",
-          price: "3499 грн",
-          image: "3.jpg",
-        },
-        {
-          id: 3,
-          desc: "Чоловічі Кросівки Nike Puma X Aka Boku Future Rider",
-          price: "4999 грн",
-          image: "4.jpg",
-        },
-        {
-          id: 4,
-          desc: "Чоловічі Кросівки Under Armour Curry 8",
-          price: "5299 грн",
-          image: "5.jpg",
-        },
-        {
-          id: 5,
-          desc: "Чоловічі Кросівки Nike Kyrie 7",
-          price: "3299 грн",
-          image: "6.jpg",
-        },
-        {
-          id: 6,
-          desc: "Чоловічі Кросівки Jordan Air Jordan 11",
-          price: "3799 грн",
-          image: "7.jpg",
-        },
-        {
-          id: 7,
-          desc: "Чоловічі Кросівки Nike LeBron XVIII",
-          price: "4399 грн",
-          image: "8.jpg",
-        },
-        {
-          id: 8,
-          desc: "Чоловічі Nike Lebron XVIII Low",
-          price: "4799 грн",
-          image: "9.jpg",
-        },
-        {
-          id: 10,
-          desc: "Чоловічі Кросівки Nike Blazer Mid Suede",
-          price: "3999 грн",
-          image: "1.jpg",
-        },
-        {
-          id: 9,
-          desc: "Чоловічі Кросівки Nike Kyrie Flytrap IV",
-          price: "4099 грн",
-          image: "10.jpg",
-        },
-        {
-          id: 11,
-          desc: "Чоловічі Кросівки Nike Blazer Mid Suede",
-          price: "3499 грн",
-          image: "3.jpg",
-        },
-      ],
+      sneakers: [],
     };
   },
+  methods: {
+   async fetchProducts() {
+      try {
+      const response = await axios.get('http://localhost:3000/sneakers');
+      this.sneakers = response.data;
+      } catch (e) {
+      alert('Error');
+      }
+    }
+  },
+  mounted() {
+    this.fetchProducts();
+  }
 };
 </script>
 

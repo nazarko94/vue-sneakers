@@ -108,11 +108,10 @@
 }
 .like {
   position: absolute;
-  top: 30px;
+  top: 20px;
   left: 35px;
   background: url('../../public/img/heart.svg') no-repeat;
   background-position: 5px;
-  margin: 8px auto;
   opacity: 0.3;
 
 }
