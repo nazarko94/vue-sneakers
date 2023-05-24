@@ -4,11 +4,11 @@
       <catalog-header />
       <hr class="line" />
       <catalog-banner :sliderItems="sliderItems" />
-      <catalog-search />
-      <div class="catalog__products">
-        <catalog-product-item 
+      <catalog-search/>
+      <div class="catalog__products" id="products">
+        <catalog-product-item
           :product="product"
-          v-for="product in products" 
+          v-for="product in products"
           :key="product.id"
         />
       </div>
@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import CatalogHeader from "./CatalogHeader.vue";
 import CatalogBanner from "./CatalogBanner.vue";
 import CatalogSearch from "./CatalogSearch.vue";
-import CatalogProductItem from './CatalogProductItem.vue';
-
+import CatalogProductItem from "./CatalogProductItem.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "CatalogWrapper",
@@ -30,8 +30,7 @@ export default {
     CatalogHeader,
     CatalogBanner,
     CatalogSearch,
-    CatalogProductItem
-
+    CatalogProductItem,
   },
   data() {
     return {
@@ -45,18 +44,38 @@ export default {
     };
   },
   methods: {
-   async fetchProducts() {
+    async fetchProducts() {
       try {
-      const response = await axios.get('http://localhost:3000/products');
-      this.products = response.data;
+        const response = await axios.get("http://localhost:3000/products");
+        this.products = response.data;
       } catch (e) {
-        alert('Error');
+        alert("Error");
       }
+    },
+    sortedProductsBySearchValue(value) {
+      if(value) {
+        this.products = this.products.filter((item) => {
+          return item.name.toLowerCase().includes(value.toLowerCase());
+        })
+      } else {
+        this.fetchProducts();
+      }
+    },
+  },
+  watch: {
+    SEARCH_VALUE() {
+      this.sortedProductsBySearchValue(this.SEARCH_VALUE);
     }
   },
+  computed: {
+    ...mapGetters([
+      'SEARCH_VALUE',
+    ])
+  },
   mounted() {
+    this.sortedProductsBySearchValue(this.SEARCH_VALUE);
     this.fetchProducts();
-  }
+  },
 };
 </script>
 

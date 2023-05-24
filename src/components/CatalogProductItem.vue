@@ -2,7 +2,9 @@
     <div class="catalog__products product-item">
       <div 
         class="product-item__btn like"
-        :class="{ redBlock: isRedBlock, redHeart: isRed }" @click="toggleRedBlock"   
+        :class="{ redBlock: isRedBlock, redHeart: isRed }" 
+        @click="toggleRedBlock"
+        :title="msgToFavorite" 
       >
       </div>
       <div class="product-item__img">
@@ -11,15 +13,20 @@
           alt="Sneaker"
         />
       </div>
-      <p class="product-item__desc">
-        {{ product.desc }}
-      </p>
+      <div class="product-item__desc">
+        {{ product.gender }}
+      </div>
+      <div class="product-item__desc name">
+        {{ product.name }}
+      </div>
       <p class="product-item__price">
         <span>Ціна:</span> {{ product.price }}.
       </p>
       <div 
         class="product-item__btn"
-        :class="{check : isChecked, green: isGreen}" @click="toggleGreenBlock"
+        :class="{check : isChecked, green: isGreen}" 
+        @click="toggleGreenBlock"
+        :title="msgToCart"
       >
       </div>
     </div>
@@ -33,7 +40,9 @@
         isRed: false,
         isRedBlock: false,
         isChecked: false,
-        isGreen: false
+        isGreen: false,
+        msgToFavorite: 'Додати до обраних',
+        msgToCart: 'Додати в кошик'
       }
     },
     props: {
@@ -77,8 +86,10 @@
     font-size: 14px;
     line-height: 17px;
     width: 150px;
-    margin: 15px auto;
   }
+  .name {
+      margin-bottom: 15px;
+    }
   &__price {
     font-weight: 700;
     font-size: 14px;
@@ -91,6 +102,7 @@
       line-height: 13px;
       text-transform: uppercase;
       color: #bdbdbd;
+      margin-bottom: 5px;
     }
   }
   &__btn {
@@ -108,8 +120,8 @@
 }
 .like {
   position: absolute;
-  top: 20px;
-  left: 35px;
+  top: 30px;
+  left: 30px;
   background: url('../../public/img/heart.svg') no-repeat;
   background-position: 5px;
   opacity: 0.3;

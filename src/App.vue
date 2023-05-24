@@ -17,6 +17,9 @@
     margin: 0;
     padding: 0;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     font-family: 'Inter', sans-serif;
     background-color: #E7F6FF;

@@ -7,7 +7,7 @@
       <h1 class="content-title">
         <span>Stan Smith,</span><br> Forever!
       </h1>
-      <a href="#" class="content-btn">Купити</a>
+      <a href="#products" class="content-btn">Купити</a>
     </div>
     <catalog-swiper 
       class="catalog__banner-img" 
@@ -35,7 +35,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .catalog__banner {
     position: relative;
     background-color: #F4EFE9;
