@@ -1,83 +1,70 @@
 <template>
+  <div class="catalog__cart-item">
     <div class="catalog__products product-item">
-      <div 
-        class="product-item__btn like"
-        :class="{ redBlock: isRedBlock, redHeart: isRed }" 
-        @click="toggleRedBlock"
-        :title="msgToFavorite" 
-      >
-      </div>
       <div class="product-item__img">
         <img
-          :src="require('../../public/img/sneakers/' + product.image)"
+          :src="require('../../public/img/sneakers/' + cart_item_data.image)"
           alt="Sneaker"
         />
       </div>
       <div class="product-item__desc">
-        {{ product.gender }}
+        {{ cart_item_data.gender }}
       </div>
       <div class="product-item__desc name">
-        {{ product.name }}
+        {{ cart_item_data.name }}
       </div>
       <p class="product-item__price">
-        <span>Ціна:</span> {{ product.price }}.
+        <span>Ціна:</span> {{ cart_item_data.price }}.
       </p>
       <div 
         class="product-item__btn"
-        :class="{check : isChecked, green: isGreen}" 
-        @click="toggleGreenBlockAndAddToCart"
+        @click="deleteFromCart"
         :title="msgToCart"
       >
       </div>
     </div>
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'CatalogProductItem',
-    data() {
-      return {
-        isRed: false,
-        isRedBlock: false,
-        isChecked: false,
-        isGreen: false,
-        msgToFavorite: 'Додати до обраних',
-        msgToCart: 'Додати в кошик'
-      }
-    },
+    name: 'CatalogCartItem',
     props: {
-      product: {
+      cart_item_data: {
         type: Object,
         default() {
           return {}
         }
-      }
+      },
     },
     methods: {
-      toggleRedBlock() {
-        this.isRedBlock = !this.isRedBlock;
-        this.isRed = !this.isRed;
-      },
-      toggleGreenBlockAndAddToCart() {
-        this.isChecked = !this.isChecked;
-        this.isGreen = !this.isGreen;
-        this.$emit('addToCart', this.product);
-      },
+      deleteFromCart() {
+        this.$emit('deleteFromCart');
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-.product-item {
+ .catalog__cart {
+  &-item {
+    margin-right: 25px;
+  }
+ }
+
+ .product-item {
   position: relative;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   width: 210px;
+  height: 260px;
   padding: 22px 0 32px 0;
   background: #ffffff;
   border-radius: 40px;
   border: 1px solid #f3f3f3;
   box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
   &__img {
     img {
       width: 133px;
@@ -114,32 +101,11 @@
     border: 1px solid #f2f2f2;
     border-radius: 8px;
     color: #d3d3d3;
-    background-image: url('../../public/img/btn-plus.svg');
+    background-image: url('../../public/img/btn-remove.svg');
     background-repeat: no-repeat;
     background-position: center;
   }
 }
-.like {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  background: url('../../public/img/heart.svg') no-repeat;
-  background-position: 5px;
-  opacity: 0.3;
-
-}
-
-.redHeart {
-  background: url('../../public/img/redHeart.svg') no-repeat;
-  background-size: 22px;
-  background-position: 3px;
-  opacity: 1;
-}
-
-.redBlock {
-  background-color: #FEF0F0;
-}
-
 .check {
   background-image: url('../../public/img/btn-checked.svg');
 }

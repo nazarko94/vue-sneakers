@@ -1,5 +1,5 @@
 <template>
- <div class="catalog__search">
+  <div class="catalog__search">
     <h2 class="catalog__search-title">
       Всі кросівки
     </h2>
@@ -22,10 +22,10 @@
       @click="clearSearchField"
     >
   </div>
-  <div class="catalog__search-error">
+  <!-- <div v-else class="catalog__search-error">
     <p>За даним запитом товарів не знайдено</p>
     <img src="../../public/img/sadSmile.png" alt="">
-  </div>
+  </div> -->
 </template>
 
 <script>

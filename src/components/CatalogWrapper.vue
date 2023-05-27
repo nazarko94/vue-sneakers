@@ -3,86 +3,42 @@
     <div class="container">
       <catalog-header />
       <hr class="line" />
-      <catalog-banner :sliderItems="sliderItems" />
-      <catalog-search/>
-      <div class="catalog__products" id="products">
-        <catalog-product-item
-          :product="product"
-          v-for="product in products"
-          :key="product.id"
-        />
-      </div>
-    </div>
-  </div>
+      <!-- <catalog-main/>
+      <catalog-cart 
+        :cart_data="CART"
+        v-if="CART.length"
+      /> -->
+      <router-view></router-view>
+     </div>
+    </div>  
 </template>
 
 <script>
-import axios from "axios";
-import CatalogHeader from "./CatalogHeader.vue";
-import CatalogBanner from "./CatalogBanner.vue";
-import CatalogSearch from "./CatalogSearch.vue";
-import CatalogProductItem from "./CatalogProductItem.vue";
-import { mapGetters } from "vuex";
-
-export default {
-  name: "CatalogWrapper",
-  components: {
-    CatalogHeader,
-    CatalogBanner,
-    CatalogSearch,
-    CatalogProductItem,
-  },
-  data() {
-    return {
-      sliderItems: [
-        { id: 0, name: "slideOne", img: "slideOne.png" },
-        { id: 1, name: "slideTwo", img: "slideTwo.png" },
-        { id: 2, name: "slideThree", img: "slideThree.png" },
-        { id: 3, name: "slideFour", img: "slideFour.png" },
-      ],
-      products: [],
-    };
-  },
-  methods: {
-    async fetchProducts() {
-      try {
-        const response = await axios.get("http://localhost:3000/products");
-        this.products = response.data;
-      } catch (e) {
-        alert("Error");
-      }
+  import CatalogHeader from './CatalogHeader.vue';
+  // import CatalogMain from './CatalogMain.vue';
+  // import CatalogCart from './CatalogCart.vue'
+  import { mapGetters } from 'vuex';
+  export default {
+    name: 'CatalogWraper',
+    components: {
+      CatalogHeader,
+      // CatalogMain,
+      // CatalogCart,
     },
-    sortedProductsBySearchValue(value) {
-      if(value) {
-        this.products = this.products.filter((item) => {
-          return item.name.toLowerCase().includes(value.toLowerCase());
-        })
-      } else {
-        this.fetchProducts();
-      }
-    },
-  },
-  watch: {
-    SEARCH_VALUE() {
-      this.sortedProductsBySearchValue(this.SEARCH_VALUE);
+    computed: {
+      ...mapGetters([
+        'CART'
+      ])
     }
-  },
-  computed: {
-    ...mapGetters([
-      'SEARCH_VALUE',
-    ])
-  },
-  mounted() {
-    this.sortedProductsBySearchValue(this.SEARCH_VALUE);
-    this.fetchProducts();
-  },
-};
+  }
+
 </script>
 
 <style lang="scss">
 .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .catalog {

@@ -15,15 +15,19 @@
     </div>
     <div class="catalog__header rightSide">
       <div class="rightSide__cart">
-        <img
-          src="../../public/img/cart.svg"
-          alt="Cart"
-          class="rightSide__cart-img"
-        />
+        <router-link :to="{name: 'cart'}">
+          <img
+            src="../../public/img/cart.svg"
+            alt="Cart"
+            class="rightSide__cart-img"
+          />
+        </router-link>
         <p class="rightSide__cart-price">1200 грн.</p>
       </div>
       <div class="rightSide__favorite">
-        <img src="../../public/img/heart.svg" alt="Heart" />
+        <router-link :to="{name: 'favorite'}">
+          <img src="../../public/img/heart.svg" alt="Heart" />
+        </router-link>
       </div>
       <div class="rightSide__user">
         <img src="../../public/img/user.svg" alt="User" />
@@ -33,8 +37,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: "CatalogHeader",
+  computed: {
+      ...mapGetters([
+        'CART'
+      ])
+    }
 };
 </script>
 
@@ -69,6 +79,9 @@ export default {
   }
 }
 .rightSide {
+  &__cart, &__favorite {
+    margin-top: 5px;
+  }
   &__cart,
   &__favorite,
   &__user {
@@ -81,6 +94,7 @@ export default {
       line-height: 17px;
       color: #5c5c5c;
       margin-left: 10px;
+      margin-top: 2px;
       vertical-align: center;
     }
   }
