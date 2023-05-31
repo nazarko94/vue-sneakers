@@ -1,6 +1,13 @@
 <template>
   <div class="catalog__cart-item">
     <div class="catalog__products product-item">
+      <div class="product-item__quantity">
+        <p class="product-item__quantity-text">
+          <span @click="decrementItem" class="product-item__quantity-btn">-</span>
+          {{ cart_item_data.quantity }}
+          <span @click="incrementItem" class="product-item__quantity-btn">+</span>
+        </p>
+      </div>
       <div class="product-item__img">
         <img
           :src="require('../../public/img/sneakers/' + cart_item_data.image)"
@@ -40,6 +47,12 @@
     methods: {
       deleteFromCart() {
         this.$emit('deleteFromCart');
+      },
+      incrementItem() {
+        this.$emit('incrementItem');
+      },
+      decrementItem() {
+        this.$emit('decrementItem');
       }
     }
   }
@@ -55,7 +68,6 @@
  .product-item {
   position: relative;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   width: 210px;
   height: 260px;
@@ -69,6 +81,21 @@
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+  }
+  &__quantity {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    &-text {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    &-btn {
+      cursor: pointer;
+      &:hover {
+        opacity: 0.4;
+      }
+    }
   }
   &__img {
     img {

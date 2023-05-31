@@ -51,11 +51,19 @@ const store = createStore({
         state.favorite.push(product);
       }
     },
-    DELETE_FROM_FAVORITE({сommit}, index) {
-      сommit('REMOVE_FROM_FAVORITE', index);
+    DELETE_FROM_FAVORITE({ сommit }, index) {
+      сommit("REMOVE_FROM_FAVORITE", index);
     },
     REMOVE_FROM_FAVORITE: (state, index) => {
       state.favorite.splice(index, 1);
+    },
+    INCREMENT: (state, index) => {
+      state.cart[index].quantity++;
+    },
+    DECREMENT: (state, index) => {
+      if(state.cart[index].quantity > 1) {
+        state.cart[index].quantity--;
+      }
     }
   },
   actions: {
@@ -82,6 +90,12 @@ const store = createStore({
     },
     ADD_TO_FAVORITE({ commit }, product) {
       commit("SET_FAVORITE", product);
+    },
+    INCREMENT_CART_ITEM({ commit }, index) {
+      commit("INCREMENT", index);
+    },
+    DECREMENT_CART_ITEM({ commit }, index) {
+      commit("DECREMENT", index);
     },
   },
   getters: {

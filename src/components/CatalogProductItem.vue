@@ -122,6 +122,10 @@
     background-image: url('../../public/img/btn-plus.svg');
     background-repeat: no-repeat;
     background-position: center;
+    &:active {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.2);
+  }
   }
 }
 .like {
@@ -144,12 +148,12 @@
   background-color: #FEF0F0;
 }
 
-.check {
+/*.check {
   background-image: url('../../public/img/btn-checked.svg');
 }
 
 .green {
   background-color: linear-gradient(180deg, #89F09C 0%, #3cc755 100%);
   border-radius: 8px;
-}
+} */
 </style>
