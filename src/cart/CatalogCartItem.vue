@@ -14,7 +14,7 @@
         {{ cart_item_data.name }}
       </div>
       <p class="product-item__price">
-        <span>Ціна:</span> {{ cart_item_data.price }}.
+        <span>Ціна:</span> {{ cart_item_data.price }} грн.
       </p>
       <div 
         class="product-item__btn"
@@ -64,7 +64,12 @@
   border-radius: 40px;
   border: 1px solid #f3f3f3;
   box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
+  margin-bottom: 29px;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+  }
   &__img {
     img {
       width: 133px;

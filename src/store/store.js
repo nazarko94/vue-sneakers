@@ -7,21 +7,22 @@ const store = createStore({
     searchValue: "",
     products: [],
     cart: [],
+    favorite: [],
   },
   mutations: {
     SET_SEARCH_VALUE_TO_VUEX: (state, value) => {
       state.searchValue = value;
     },
     SET_CART: (state, product) => {
-      if(state.cart.length) {
+      if (state.cart.length) {
         let isProductsExsists = false;
         state.cart.map((item) => {
-          if(item.id === product.id) {
+          if (item.id === product.id) {
             isProductsExsists = true;
             item.quantity++;
           }
-        })
-        if(!isProductsExsists) {
+        });
+        if (!isProductsExsists) {
           state.cart.push(product);
         }
       } else {
@@ -33,6 +34,28 @@ const store = createStore({
     },
     REMOVE_FROM_CART: (state, index) => {
       state.cart.splice(index, 1);
+    },
+    SET_FAVORITE: (state, product) => {
+      if (state.favorite.length) {
+        let isProductsExsists = false;
+        state.favorite.map((item) => {
+          if (item.id === product.id) {
+            isProductsExsists = true;
+            item.quantity++;
+          }
+        });
+        if (!isProductsExsists) {
+          state.favorite.push(product);
+        }
+      } else {
+        state.favorite.push(product);
+      }
+    },
+    DELETE_FROM_FAVORITE({сommit}, index) {
+      сommit('REMOVE_FROM_FAVORITE', index);
+    },
+    REMOVE_FROM_FAVORITE: (state, index) => {
+      state.favorite.splice(index, 1);
     }
   },
   actions: {
@@ -57,6 +80,9 @@ const store = createStore({
     DELETE_FROM_CART({ commit }, index) {
       commit("REMOVE_FROM_CART", index);
     },
+    ADD_TO_FAVORITE({ commit }, product) {
+      commit("SET_FAVORITE", product);
+    },
   },
   getters: {
     PRODUCTS(state) {
@@ -67,6 +93,9 @@ const store = createStore({
     },
     CART(state) {
       return state.cart;
+    },
+    FAVORITE(state) {
+      return state.favorite;
     },
   },
 });

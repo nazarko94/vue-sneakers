@@ -2,86 +2,98 @@
   "products": [
     {
       "id": 0,
+      "quantity": 1,
       "gender": "Чоловічі Кросівки",
       "name": "Blazer Mid Suede",
-      "price": "3999 грн",
+      "price": 3999,
       "image": "1.jpg"
     },
     {
       "id": 1,
+      "quantity": 1,
       "gender": "Жіночі Кросівки",
       "name": "Nike Air Max 270",
-      "price": "4199 грн",
+      "price": 4199,
       "image": "2.jpg"
     },
     {
       "id": 2,
+      "quantity": 1,
       "gender": "Жіночі Кросівки",
       "name": "Nike Blazer Mid Suede",
-      "price": "3499 грн",
+      "price": 3499,
       "image": "3.jpg"
     },
     {
       "id": 3,
+      "quantity": 1,
       "gender": "Чоловічі Кросівки",
       "name": "Puma X Aka Boku Future Rider",
-      "price": "4999 грн",
+      "price": 4999,
       "image": "4.jpg"
     },
     {
       "id": 4,
+      "quantity": 1,
       "gender": "Жіночі Кросівки",
       "name": "Under Armour Curry 8",
-      "price": "5299 грн",
+      "price": 5299,
       "image": "5.jpg"
     },
     {
       "id": 5,
+      "quantity": 1,
       "gender": "Жіночі Кросівки",
       "name": "Kyrie 7",
-      "price": "3299 грн",
+      "price": 3299,
       "image": "6.jpg"
     },
     {
       "id": 6,
+      "quantity": 1,
       "gender": "Чоловічі Кросівки",
       "name": "Jordan Air Jordan 11",
-      "price": "3799 грн",
+      "price": 3799,
       "image": "7.jpg"
     },
     {
       "id": 7,
+      "quantity": 1,
       "gender": "Чоловічі Кросівки",
       "name": "LeBron XVIII",
-      "price": "4399 грн",
+      "price": 4399,
       "image": "8.jpg"
     },
     {
       "id": 8,
+      "quantity": 1,
       "gender": "Чоловічі Кросівки",
       "name": "Lebron XVIII Low",
-      "price": "4799 грн",
+      "price": 4799,
       "image": "9.jpg"
     },
     {
       "id": 9,
+      "quantity": 1,
       "gender": "Жіночі Кросівки",
       "name": "Blazer Mid Suede",
-      "price": "3999 грн",
+      "price": 3999,
       "image": "1.jpg"
     },
     {
       "id": 10,
+      "quantity": 1,
       "gender": "Чоловічі Кросівки",
       "name": "Nike Kyrie Flytrap IV",
-      "price": "4099 грн",
+      "price": 4099,
       "image": "10.jpg"
     },
     {
       "id": 11,
+      "quantity": 1,
       "gender": "Жіночі Кросівки",
       "name": "Blazer Mid Suede",
-      "price": "3499 грн",
+      "price": 3499,
       "image": "3.jpg"
     }
   ]

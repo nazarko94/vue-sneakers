@@ -1,5 +1,9 @@
 <template>
-  <div class="catalog__favorite">
+  <favorite-item-wrapper
+    v-if="FAVORITE.length"
+    :favorite_data="FAVORITE"
+  />
+  <div v-if="!FAVORITE.length" class="catalog__favorite">
     <div class="catalog__favorite-img">
       <img src="../../public/img/cryingSmile.png" alt="Sad smile"/>
     </div>
@@ -13,8 +17,18 @@
 </template>
 
 <script>
+  import FavoriteItemWrapper from './FavoriteItemWrapper.vue';
+  import { mapGetters } from 'vuex';
   export default {
-    name: 'CatalogCart'
+    name: 'CatalogFavorite',
+    components: {
+      FavoriteItemWrapper
+    },
+    computed: {
+      ...mapGetters([
+        'FAVORITE'
+      ])
+    }
   }
 </script>
 

@@ -2,12 +2,7 @@
   <div class="catalog">
     <div class="container">
       <catalog-header />
-      <hr class="line" />
-      <!-- <catalog-main/>
-      <catalog-cart 
-        :cart_data="CART"
-        v-if="CART.length"
-      /> -->
+      <hr class="line" :cart-data="cart_data"/>
       <router-view></router-view>
      </div>
     </div>  
@@ -15,20 +10,17 @@
 
 <script>
   import CatalogHeader from './CatalogHeader.vue';
-  // import CatalogMain from './CatalogMain.vue';
-  // import CatalogCart from './CatalogCart.vue'
   import { mapGetters } from 'vuex';
   export default {
     name: 'CatalogWraper',
     components: {
       CatalogHeader,
-      // CatalogMain,
-      // CatalogCart,
     },
     computed: {
       ...mapGetters([
-        'CART'
-      ])
+        'CART',
+        'FAVORITE'
+      ]),
     }
   }
 

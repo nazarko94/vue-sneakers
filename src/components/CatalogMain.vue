@@ -8,11 +8,9 @@
             v-for="product in PRODUCTS"
             :key="product.id"
             @addToCart="addToCart"
+            @addToFavorite="addToFavorite"
           />
         </div>
-        <!-- <router-link :to="{name: 'cart'}">
-          <div class="catalog__link">{{CART.length}}</div>
-        </router-link> -->
       </div>
 </template>
 
@@ -51,11 +49,15 @@
     },
     ...mapActions([
       'ADD_TO_CART',
-      "GET_PRODUCTS_FROM_API"
+      "GET_PRODUCTS_FROM_API",
+      "ADD_TO_FAVORITE"
     ]),
     addToCart(el) {
       this.ADD_TO_CART(el)
     },
+    addToFavorite(el) {
+      this.ADD_TO_FAVORITE(el);
+    }
   },
   watch: {
     SEARCH_VALUE() {
@@ -67,7 +69,7 @@
       'SEARCH_VALUE',
       'PRODUCTS',
       "CART"
-    ])
+    ]),
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API();

@@ -20,13 +20,18 @@
             src="../../public/img/cart.svg"
             alt="Cart"
             class="rightSide__cart-img"
+            :title="msgCart"
           />
         </router-link>
-        <p class="rightSide__cart-price">1200 грн.</p>
+        <p class="rightSide__cart-price">{{cartTotalCost}} грн.</p>
       </div>
       <div class="rightSide__favorite">
         <router-link :to="{name: 'favorite'}">
-          <img src="../../public/img/heart.svg" alt="Heart" />
+          <img 
+            src="../../public/img/heart.svg" 
+            alt="Heart" 
+            :title="msgHeart"
+          />
         </router-link>
       </div>
       <div class="rightSide__user">
@@ -40,10 +45,26 @@
 import { mapGetters } from 'vuex';
 export default {
   name: "CatalogHeader",
+  data() {
+    return {
+      msgCart: 'Кошик',
+      msgHeart: 'Обране'
+    }
+  },
   computed: {
       ...mapGetters([
         'CART'
-      ])
+      ]),
+      cartTotalCost() {
+        let result = [];
+        for(let item of this.CART) {
+          result.push(item.price * item.quantity);
+        }
+        result = result.reduce((sum, el) => {
+          return sum + el;
+        }, 0);
+        return result;
+      },
     }
 };
 </script>

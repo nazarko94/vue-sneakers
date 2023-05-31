@@ -34,7 +34,7 @@ import { mapGetters } from 'vuex';
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .catalog__cart {
     display: flex;
     flex-direction: column;

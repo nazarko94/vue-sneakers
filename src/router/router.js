@@ -1,8 +1,8 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import CatalogMain from "@/components/CatalogMain.vue";
-import CatalogCart from "@/components/CatalogCart.vue";
-import CatalogFavorite from "@/components/CatalogFavorite.vue";
+import CatalogCart from "@/cart/CatalogCart.vue";
+import CatalogFavorite from "@/favorite/CatalogFavorite.vue";
 
 const router = createRouter({
   history: createWebHistory(),
