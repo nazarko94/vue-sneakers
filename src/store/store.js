@@ -4,15 +4,11 @@ import axios from "axios";
 
 const store = createStore({
   state: {
-    searchValue: "",
     products: [],
     cart: [],
     favorite: [],
   },
   mutations: {
-    SET_SEARCH_VALUE_TO_VUEX: (state, value) => {
-      state.searchValue = value;
-    },
     SET_CART: (state, product) => {
       if (state.cart.length) {
         let isProductsExsists = false;
@@ -79,9 +75,6 @@ const store = createStore({
         return error;
       }
     },
-    GET_SEARCH_VALUE_TO_VUEX({ commit }, value) {
-      commit("SET_SEARCH_VALUE_TO_VUEX", value);
-    },
     ADD_TO_CART({ commit }, product) {
       commit("SET_CART", product);
     },
@@ -101,9 +94,6 @@ const store = createStore({
   getters: {
     PRODUCTS(state) {
       return state.products;
-    },
-    SEARCH_VALUE(state) {
-      return state.searchValue;
     },
     CART(state) {
       return state.cart;

@@ -43,8 +43,7 @@
   &__products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 50px;
     padding-bottom: 20px;
   }
 }

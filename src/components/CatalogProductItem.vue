@@ -14,7 +14,7 @@
         />
       </div>
       <div class="product-item__desc">
-        {{ product.gender }}
+        {{ product.category }}
       </div>
       <div class="product-item__desc name">
         {{ product.name }}
@@ -79,6 +79,7 @@
   border: 1px solid #f3f3f3;
   box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  margin-right: 25px;
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);

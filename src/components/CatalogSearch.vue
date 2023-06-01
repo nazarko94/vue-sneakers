@@ -1,19 +1,14 @@
 <template>
   <div class="catalog__search">
-    <h2 class="catalog__search-title">
-      Всі кросівки
-    </h2>
     <input 
       type="text" 
       class="catalog__search-field"
       placeholder="Пошук..."
-      v-model="searchValue"
     >
     <img
       src="../../public/img/search.svg" 
       alt="Search" 
       class="catalog__search-button"
-      @click="search(searchValue)"
     >
     <img
       src="../../public/img/plus.svg" 
@@ -29,12 +24,11 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
   export default {
     name: 'CatalogSearch',
     data() {
       return {
-        searchValue: '',
+
       }
     },
     props: {
@@ -45,23 +39,6 @@
         }
       }
     },
-    computed: {
-      ...mapGetters([
-        'SEARCH_VALUE'
-      ])
-    },
-    methods: {
-      ...mapActions([
-        'GET_SEARCH_VALUE_TO_VUEX',
-      ]),
-      search(value) {
-        this.GET_SEARCH_VALUE_TO_VUEX(value);
-      },
-      clearSearchField() {
-        this.searchValue = '';
-        this.GET_SEARCH_VALUE_TO_VUEX();
-      }
-    }
   }
 </script>
 
@@ -71,7 +48,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40px;
     &-title {
       font-weight: 700;
       font-size: 32px;
@@ -80,12 +56,13 @@
     &-field {
       width: 250px;
       height: 45px;
-      border: 1px solid #F3F3F3;
+      border: 1px solid #ddd;
       border-radius: 10px;
       font-size: 14px;
       padding-left: 40px;
       line-height: 17px;
-      color: #C4C4C4;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       opacity: 0.6;
       &:focus, :active {
         outline: none;

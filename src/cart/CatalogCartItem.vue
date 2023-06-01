@@ -15,7 +15,7 @@
         />
       </div>
       <div class="product-item__desc">
-        {{ cart_item_data.gender }}
+        {{ cart_item_data.category }}
       </div>
       <div class="product-item__desc name">
         {{ cart_item_data.name }}

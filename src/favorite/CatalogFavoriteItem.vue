@@ -8,7 +8,7 @@
         />
       </div>
       <div class="product-item__desc">
-        {{ favorite_item_data.gender }}
+        {{ favorite_item_data.category }}
       </div>
       <div class="product-item__desc name">
         {{ favorite_item_data.name }}
