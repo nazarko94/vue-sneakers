@@ -1,22 +1,24 @@
 <template>
-  <div class="catalog__search">
+  <form class="catalog__search">
     <input 
-      type="text" 
+      name="query" 
       class="catalog__search-field"
       placeholder="Пошук..."
+      v-model="searchQuery"
     >
     <img
       src="../../public/img/search.svg" 
       alt="Search" 
       class="catalog__search-button"
+      @click="event => searchByName(searchQuery)"
     >
     <img
       src="../../public/img/plus.svg" 
       alt="clear" 
       class="catalog__search-clear"
-      @click="clearSearchField"
+      @click="$event => clearSearch()"
     >
-  </div>
+  </form>
   <!-- <div v-else class="catalog__search-error">
     <p>За даним запитом товарів не знайдено</p>
     <img src="../../public/img/sadSmile.png" alt="">
@@ -24,11 +26,12 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   export default {
     name: 'CatalogSearch',
     data() {
       return {
-
+        searchQuery: '',
       }
     },
     props: {
@@ -39,6 +42,18 @@
         }
       }
     },
+    methods: {
+      ...mapActions([
+        "GET_SEARCH_QUERY"
+      ]),
+      searchByName(name) {
+        this.GET_SEARCH_QUERY(name);
+      },
+      clearSearch() {
+        this.searchQuery = '';
+        this.GET_SEARCH_QUERY();
+      }
+    }
   }
 </script>
 

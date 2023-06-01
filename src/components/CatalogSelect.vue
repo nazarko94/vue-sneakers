@@ -86,13 +86,14 @@
       font-size: 14px;
       font-weight: 400;
       opacity: 0.6;
+      color: #5c5c5c;
     } 
     &__arrow {
       img {
         position: absolute;
-        top: 8px;
-        left: 200px;
-        width: 60px;
+        top: 14px;
+        left: 215px;
+        width: 40px;
         opacity: 0.6;
         transition: 0.3s; 
       }

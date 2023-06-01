@@ -12,6 +12,9 @@
           />
           <catalog-search/>
         </div>
+        <catalog-notification
+          :messages="messages"
+        />
         <div class="catalog__products" id="products">
           <catalog-product-item
             :product="product"
@@ -28,6 +31,7 @@
   import CatalogBanner from "./CatalogBanner.vue";
   import CatalogSearch from "./CatalogSearch.vue";
   import CatalogSelect from "./CatalogSelect.vue";
+  import CatalogNotification from "./notifications/CatalogNotification.vue";
   import CatalogProductItem from "./CatalogProductItem.vue";
   import { mapGetters, mapActions } from "vuex";
   export default {
@@ -37,6 +41,7 @@
     CatalogSearch,
     CatalogProductItem,
     CatalogSelect,
+    CatalogNotification
   },
   data() {
     return {
@@ -54,6 +59,7 @@
       ],
       sortedProducts: [],
       selected: 'Всі кросівки',
+      messages: []
     };
   },
   methods: {
@@ -64,6 +70,10 @@
     ]),
     addToCart(el) {
       this.ADD_TO_CART(el)
+      .then(() => {
+        let timeStamp = Date.now().toLocaleString();
+        this.messages.unshift({name: 'Товар додано в корзину', id: timeStamp});
+      })
     },
     addToFavorite(el) {
       this.ADD_TO_FAVORITE(el);
@@ -82,11 +92,23 @@
         })
       }
     },
+    filteredByName(value) {
+      this.sortedProducts = [...this.PRODUCTS];
+      this.selected = 'Всі кросівки';
+      if(value) {
+        this.sortedProducts = this.sortedProducts.filter((item) => {
+          return item.name.toLowerCase().includes(value.toLowerCase());
+        })
+      } else {
+        this.sortedProducts = this.PRODUCTS;
+      }
+    }
   },
   computed: {
     ...mapGetters([
       'PRODUCTS',
-      "CART"
+      "CART",
+      "SEARCH_QUERY",
     ]),
     filteredProducts() {
       let b = this;
@@ -96,10 +118,16 @@
         b.selected = 'Всі кросівки';
         return this.PRODUCTS;
       }
+    },
+  },
+  watch: {
+    SEARCH_QUERY() {
+      this.filteredByName(this.SEARCH_QUERY);
     }
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API();
+    this.filteredByName(this.SEARCH_QUERY);
   },
 };
 </script>

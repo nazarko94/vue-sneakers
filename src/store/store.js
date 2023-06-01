@@ -7,6 +7,7 @@ const store = createStore({
     products: [],
     cart: [],
     favorite: [],
+    searchQuery: "",
   },
   mutations: {
     SET_CART: (state, product) => {
@@ -57,10 +58,13 @@ const store = createStore({
       state.cart[index].quantity++;
     },
     DECREMENT: (state, index) => {
-      if(state.cart[index].quantity > 1) {
+      if (state.cart[index].quantity > 1) {
         state.cart[index].quantity--;
       }
-    }
+    },
+    SET_SEARCH_QUERY: (state, value) => {
+      state.searchQuery = value;
+    },
   },
   actions: {
     async GET_PRODUCTS_FROM_API({ commit }) {
@@ -90,6 +94,9 @@ const store = createStore({
     DECREMENT_CART_ITEM({ commit }, index) {
       commit("DECREMENT", index);
     },
+    GET_SEARCH_QUERY({commit}, value) {
+      commit('SET_SEARCH_QUERY', value);
+    }
   },
   getters: {
     PRODUCTS(state) {
@@ -100,6 +107,9 @@ const store = createStore({
     },
     FAVORITE(state) {
       return state.favorite;
+    },
+    SEARCH_QUERY(state) {
+      return state.searchQuery;
     },
   },
 });
