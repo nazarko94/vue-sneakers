@@ -3,12 +3,19 @@ import { createRouter, createWebHistory } from "vue-router";
 import CatalogMain from "@/components/CatalogMain.vue";
 import CatalogCart from "@/cart/CatalogCart.vue";
 import CatalogFavorite from "@/favorite/CatalogFavorite.vue";
+import RegisterForm from "@/RegisterForm.vue";
+import LoginForm from "@/LoginForm.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: "/",
+      name: "login",
+      component: LoginForm,
+    },
+    {
+      path: "/catalog",
       name: "catalog",
       component: CatalogMain,
     },
@@ -22,6 +29,11 @@ const router = createRouter({
       path: "/favorite",
       name: "favorite",
       component: CatalogFavorite,
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: RegisterForm,
     },
   ],
 });

@@ -1,20 +1,17 @@
 <template>
-  <div class="catalog">
-    <div class="container">
-      <catalog-header />
-      <hr class="line" :cart-data="cart_data"/>
+  <!-- <login-form/> -->
+    <div>
       <router-view></router-view>
-     </div>
     </div>  
 </template>
 
 <script>
-  import CatalogHeader from './CatalogHeader.vue';
   import { mapGetters } from 'vuex';
+  // import LoginForm from '@/LoginForm.vue';
   export default {
     name: 'CatalogWraper',
     components: {
-      CatalogHeader,
+      // LoginForm,
     },
     computed: {
       ...mapGetters([

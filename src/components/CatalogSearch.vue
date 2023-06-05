@@ -1,5 +1,5 @@
 <template>
-  <form class="catalog__search">
+  <form v-if="!product_data.length" class="catalog__search">
     <input 
       name="query" 
       class="catalog__search-field"
@@ -19,10 +19,10 @@
       @click="$event => clearSearch()"
     >
   </form>
-  <!-- <div v-else class="catalog__search-error">
+  <div v-else class="catalog__search-error">
     <p>За даним запитом товарів не знайдено</p>
     <img src="../../public/img/sadSmile.png" alt="">
-  </div> -->
+  </div>
 </template>
 
 <script>

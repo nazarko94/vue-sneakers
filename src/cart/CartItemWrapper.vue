@@ -8,13 +8,14 @@
       @incrementItem="incrementItem(index)"
       @decrementItem="decrementItem(index)"
     />
+    <catalog-popup v-if="isPopupVisiable" @closePopup="closePopup"/>
   </div>
   <div class="footer">
     <div class="cart__item-footer">
       <p class="cart__item-footer-totalCost">Всього: </p>
       <b class="cart__item-footer-totalSum">{{cartTotalCost}} грн.</b>
     </div>
-    <a class="catalog__cart-btn totalCostBtn">
+    <a class="catalog__cart-btn totalCostBtn" @click="showPopup">
       Оформити замовлення
       <img class="arrow" src="../../public/img/arrow.svg" alt="Arrow"/>
     </a>
@@ -22,12 +23,19 @@
 </template>
 
 <script>
+  import CatalogPopup from '@/components/popup/CatalogPopup.vue';
   import CatalogCartItem from './CatalogCartItem.vue';
   import { mapActions } from 'vuex';
   export default {
     name: 'CartItemWrapper',
+    data() {
+      return {
+        isPopupVisiable: false,
+      }
+    },
     components: {
       CatalogCartItem,
+      CatalogPopup,
     },
     props: {
       cart_data: {
@@ -51,6 +59,12 @@
       },
       decrementItem(index) {
         this.DECREMENT_CART_ITEM(index);
+      },
+      showPopup() {
+        this.isPopupVisiable = true;
+      },
+      closePopup() {
+        this.isPopupVisiable = false;
       }
     },
     computed: {

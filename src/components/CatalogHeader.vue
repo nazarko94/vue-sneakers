@@ -35,7 +35,13 @@
         </router-link>
       </div>
       <div class="rightSide__user">
-        <img src="../../public/img/user.svg" alt="User" />
+        <router-link :to="{name: 'login'}">
+          <img 
+            src="../../public/img/user.svg" 
+            alt="User"
+            :title="msgLogout"
+          />
+        </router-link>
       </div>
     </div>
   </div>
@@ -48,7 +54,8 @@ export default {
   data() {
     return {
       msgCart: 'Кошик',
-      msgHeart: 'Обране'
+      msgHeart: 'Обране',
+      msgLogout: 'Вийти'
     }
   },
   computed: {
@@ -100,9 +107,6 @@ export default {
   }
 }
 .rightSide {
-  &__cart, &__favorite {
-    margin-top: 5px;
-  }
   &__cart,
   &__favorite,
   &__user {
